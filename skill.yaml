@@ -1,0 +1,5 @@
+name: xiaohongshu-starter
+title: Xiaohongshu Account Starter
+description: Start a Xiaohongshu account from zero with a reusable workflow covering business definition, positioning, topic bank, note production, funnel review and a four week execution loop.
+category: Creation
+include_in_prompt: true
