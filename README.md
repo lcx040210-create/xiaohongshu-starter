@@ -1,27 +1,27 @@
-# Xiaohongshu Account Starter
+# Muse Skills
 
-A reusable agent skill for starting a Xiaohongshu account from zero and turning it into a working business channel in about one month.
+Reusable agent skills, written as original paraphrases, not copies of the works that inspired them.
 
-## What it covers
+## 1. Xiaohongshu Account Starter
 
-- Define the business and write positioning as one executable sentence
-- Learn from comparable accounts
-- Build a topic bank from real user questions
-- Prepare the homepage and a first batch of posts together
-- Produce one note with a clear job
-- Review results by funnel stage and handle inquiries
-- Sequence paid promotion, tools and expansion
-- Run a four week execution loop
-- Leave behind reusable cards: positioning, comparable accounts, production, review and inquiry
+`SKILL.md` and `skill.yaml` at the repo root.
 
-## Use
+A reusable workflow for starting a Xiaohongshu account from zero and turning it into a working business channel in about one month: business definition, positioning, comparable accounts, topic bank, note production, funnel review, and a four week execution loop.
 
-Load `SKILL.md` in an agent that supports Muse skills, then follow its workflow for the user's business, audience and offer. Fill in the user's own tools, costs and prices. Do not invent them.
-
-## Source and attribution
-
-This skill is an original paraphrase of a general 0 to 1 workflow. It is not a copy of the tutorial that inspired it. Read the original tutorial in full here:
+Original tutorial that inspired it, by Jessi Cao (@JessiCao_JC):
 
 https://x.com/jessicao_jc/status/2113478290661163067
 
-Author of the original tutorial: Jessi Cao (@JessiCao_JC).
+## 2. Image Reverse Prompt
+
+`image-reverse-prompt/SKILL.md`, `image-reverse-prompt/skill.yaml`, `image-reverse-prompt/README.md`.
+
+When the user uploads an image and asks for its prompt, first classify the image into one of seven categories (general, font / logo / text design, landscape, photography, illustration, 3D, IP character), then break it down by that category's dimensions, then output a copy-ready reconstructed prompt with keywords. Composite posters use general as the main category, with photography and text design as auxiliaries.
+
+Original post that inspired it, by Musolsol (@MMMusol), 2026-08-29:
+
+https://x.com/mmmusol/status/2093584457412517905
+
+## Use
+
+Load a `SKILL.md` in an agent that supports Muse skills, then follow its workflow. Fill in the user's own tools, costs, and prices. Do not invent them.

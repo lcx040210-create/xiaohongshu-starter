@@ -1,0 +1,5 @@
+name: image-reverse-prompt
+title: Image Reverse Prompt
+description: Reverse-engineer an image prompt by first classifying the image into one of seven categories, then breaking it down by that category's dimensions, then outputting a copy-ready reconstructed prompt with keywords.
+category: Creation
+include_in_prompt: true
