@@ -13,16 +13,28 @@ input{font-size:15px;padding:6px}
 </head>
 <body>
 <h2>粘贴接收器（把剪贴板里的表格粘贴到这里，再下载成文件）</h2>
-<p>操作：点进下面的大文本框 → 点鼠标右键 → 选“粘贴” → 看下面的行数对不对 → 在文件名框填好名字 → 点“下载文件”。不要用 Ctrl+V 快捷键。</p>
+<p>操作（二选一）：① 点“从剪贴板读取并粘贴”按钮（浏览器弹出权限提示时点“允许”）；② 点进下面的大文本框，点鼠标右键选“粘贴”。粘贴后看下面的行数对不对，再在文件名框填好名字，点“下载文件”。</p>
 <p>文件名：<input id="fname" value="tesla-1109.tsv" size="30"></p>
-<textarea id="box" placeholder="点这里，右键粘贴"></textarea>
+<textarea id="box" placeholder="点这里，右键粘贴，或点上面的读取按钮"></textarea>
 <div id="info">字符数：0，行数：0</div>
+<button id="readcb">从剪贴板读取并粘贴</button>
 <button id="dl">下载文件</button>
 <button id="clr">清空</button>
 <script>
 var box=document.getElementById('box'),info=document.getElementById('info');
 function upd(){var t=box.value;var lines=t?t.split('\n').length:0;info.textContent='字符数：'+t.length+'，行数：'+lines;}
 box.addEventListener('input',upd);
+document.getElementById('readcb').onclick=function(){
+  if(!navigator.clipboard||!navigator.clipboard.readText){
+    info.textContent='此浏览器不支持剪贴板读取接口，请用右键粘贴';return;
+  }
+  navigator.clipboard.readText().then(function(t){
+    box.value=t;upd();
+    info.textContent+='（已从剪贴板读取）';
+  }).catch(function(e){
+    info.textContent='读取剪贴板失败：'+e.name+' '+e.message+'。请在弹出的权限提示里点允许，或用右键粘贴。';
+  });
+};
 document.getElementById('dl').onclick=function(){
   var name=document.getElementById('fname').value||'sheet.tsv';
   var blob=new Blob([box.value],{type:'text/tab-separated-values;charset=utf-8'});
