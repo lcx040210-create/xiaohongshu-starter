@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>粘贴接收器</title>
+<style>
+body{font-family:system-ui,sans-serif;margin:16px}
+textarea{width:100%;height:60vh;font-family:monospace;font-size:13px}
+#info{margin:8px 0;font-weight:bold}
+button{font-size:16px;padding:8px 16px;margin-right:8px}
+input{font-size:15px;padding:6px}
+</style>
+</head>
+<body>
+<h2>粘贴接收器（把剪贴板里的表格粘贴到这里，再下载成文件）</h2>
+<p>操作：点进下面的大文本框 → 点鼠标右键 → 选“粘贴” → 看下面的行数对不对 → 在文件名框填好名字 → 点“下载文件”。不要用 Ctrl+V 快捷键。</p>
+<p>文件名：<input id="fname" value="tesla-1109.tsv" size="30"></p>
+<textarea id="box" placeholder="点这里，右键粘贴"></textarea>
+<div id="info">字符数：0，行数：0</div>
+<button id="dl">下载文件</button>
+<button id="clr">清空</button>
+<script>
+var box=document.getElementById('box'),info=document.getElementById('info');
+function upd(){var t=box.value;var lines=t?t.split('\n').length:0;info.textContent='字符数：'+t.length+'，行数：'+lines;}
+box.addEventListener('input',upd);
+document.getElementById('dl').onclick=function(){
+  var name=document.getElementById('fname').value||'sheet.tsv';
+  var blob=new Blob([box.value],{type:'text/tab-separated-values;charset=utf-8'});
+  var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;a.click();
+  setTimeout(function(){URL.revokeObjectURL(a.href);},5000);
+};
+document.getElementById('clr').onclick=function(){box.value='';upd();};
+upd();
+</script>
+</body>
+</html>
